@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+
+class Authentication {
+private:
+    std::string correctUser = "admin";
+    std::string correctPass = "SecurePass123";
+
+public:
+    bool login(std::string username, std::string password) {
+        if (username == correctUser && password == correctPass) {
+            std::cout << "Đăng nhập thành công! Chào mừng " << username << ".\n";
+            return true;
+        } else {
+            std::cout << "Sai tài khoản hoặc mật khẩu. Vui lòng thử lại!\n";
+            return false;
+        }
+    }
+};
+
+int main() {
+    Authentication auth;
+    auth.login("admin", "wrong_password"); // Thử nghiệm thất bại
+    auth.login("admin", "SecurePass123");  // Thử nghiệm thành công
+    return 0;
+}
