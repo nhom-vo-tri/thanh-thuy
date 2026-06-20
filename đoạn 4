@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+
+class PaymentProcessor {
+public:
+    void processPayment(std::string method, double amount) {
+        std::cout << "Bắt đầu xử lý giao dịch...\n";
+        if (method == "COD") {
+            std::cout << "Phương thức: Thanh toán khi nhận hàng (COD).\n";
+            std::cout << "Số tiền cần thanh toán khi giao hàng: " << amount << " VND.\n";
+            std::cout << "Trạng thái: Đơn hàng đã được tạo thành công!\n";
+        } else if (method == "CREDIT_CARD") {
+            std::cout << "Phương thức: Thẻ tín dụng.\n";
+            std::cout << "Đang kết nối ngân hàng để trừ số tiền: " << amount << " VND...\n";
+            std::cout << "Trạng thái: Thanh toán thành công!\n";
+        } else {
+            std::cout << "Lỗi: Phương thức thanh toán không hợp lệ.\n";
+        }
+        std::cout << "----------------------------------------\n";
+    }
+};
+
+int main() {
+    PaymentProcessor payment;
+    payment.processPayment("COD", 500000);
+    payment.processPayment("CREDIT_CARD", 1200000);
+    return 0;
+}
