@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+
+struct UserProfile {
+    std::string username;
+    std::string email;
+    std::string avatarUrl;
+
+    void updateAvatar(std::string newUrl) {
+        if (newUrl.empty()) {
+            std::cout << "Lỗi: Đường dẫn ảnh không được để trống.\n";
+            return;
+        }
+        this->avatarUrl = newUrl;
+        std::cout << "Hệ thống: Đã cập nhật ảnh đại diện mới thành công!\n";
+    }
+
+    void displayProfile() {
+        std::cout << "=== THÔNG TIN USER ===\n";
+        std::cout << "Tên tài khoản: " << username << "\n";
+        std::cout << "Email: " << email << "\n";
+        std::cout << "Đường dẫn Avatar: " << avatarUrl << "\n";
+        std::cout << "======================\n\n";
+    }
+};
+
+int main() {
+    UserProfile user = {"nguyen_van_a", "anv@email.com", "default_avatar.png"};
+    user.displayProfile();
+    
+    // Cập nhật avatar mới
+    user.updateAvatar("avatar_updated_2026.png");
+    user.displayProfile();
+    return 0;
+}
