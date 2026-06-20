@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+struct Product {
+    int id;
+    std::string name;
+    double price;
+};
+
+class Cart {
+private:
+    std::vector<Product> items;
+public:
+    void addProduct(Product p) {
+        items.push_back(p);
+        std::cout << "Đã thêm thành công: " << p.name << " vào giỏ hàng.\n";
+    }
+
+    void showCart() {
+        double total = 0;
+        std::cout << "--- GIỎ HÀNG CỦA BẠN ---\n";
+        for (const auto& item : items) {
+            std::cout << "- " << item.name << ": " << item.price << " USD\n";
+            total += item.price;
+        }
+        std::cout << "Tổng tiền: " << total << " USD\n-----------------------\n";
+    }
+};
+
+int main() {
+    Cart myCart;
+    myCart.addProduct({101, "Điện thoại iPhone 15", 999.99});
+    myCart.addProduct({102, "Tai nghe AirPods Pro", 249.50});
+    myCart.showCart();
+    return 0;
+}
