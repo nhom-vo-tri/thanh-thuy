@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+void searchProduct(const std::vector<std::string>& products, std::string keyword) {
+    bool found = false;
+    std::cout << "Kết quả tìm kiếm cho từ khóa '" << keyword << "':\n";
+    for (const auto& prod : products) {
+        // Kiểm tra xem từ khóa có nằm trong tên sản phẩm không
+        if (prod.find(keyword) != std::string::npos) {
+            std::cout << "+ " << prod << "\n";
+            found = true;
+        }
+    }
+    if (!found) {
+        std::cout << "Không tìm thấy sản phẩm nào phù hợp.\n";
+    }
+}
+
+int main() {
+    std::vector<std::string> store = {"Laptop Dell XPS", "MacBook Pro M3", "Asus ROG Strix", "iPad Pro"};
+    searchProduct(store, "Laptop");
+    searchProduct(store, "@#$%%"); // Thử nghiệm với ký tự đặc biệt
+    return 0;
+}
